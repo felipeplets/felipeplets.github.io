@@ -1,0 +1,270 @@
+@charset "UTF-8";
+a {
+   outline: 0;
+}
+
+body
+{
+  margin: 0;
+  padding: 0;
+  background-color: #010101;
+  background-image: url(../Common/Images/bckPanel.jpg);
+  background-position: 0 302px;
+  background-repeat: repeat-x;
+  font:0.75em/1.65 "Lucida Grande",Tahoma,Verdana,sans-serif;
+}
+
+table {
+  width: 100%;
+}
+table td {
+  width: 50%;
+}
+
+table .logo {
+  text-align: center;
+}
+
+#pnlHeader
+{
+  background-image: url(../Common/Images/bckHeader.jpg);
+  height: 80px;
+  border-bottom: 1px solid #38353a;
+}
+
+#pnlHeader h1
+{
+  display: none;
+}
+
+#pnlHeader #lnkHome
+{
+  font-size: 12px;
+  color: #C6C8D7;
+  display: block;
+  width: 257px;
+  border: 0;
+  text-align: right;
+  text-decoration: none;
+  padding: 10px;
+  position: absolute;
+  margin: 10px 0 0 -500px;
+  left: 50%;
+}
+#pnlHeader #lnkHome img
+{
+  border: 0;
+}
+#pnlHeader #lnkHome span
+{
+  margin-right: 52px;
+}
+
+#pnlBanner
+{
+  height: 220px;
+  border-bottom: 1px solid #38353a;
+}
+
+#pnlBanner span
+{
+  z-index: 9999;
+  position: absolute;
+  margin: 30px 0 0 50px;
+  left: 50%;
+  padding: 10px 5px 5px;
+  font-size: 14px;
+  border: 2px solid #C6C8D7;
+  color: #C6C8D7;
+  text-align: center;
+  cursor: default;
+  background-color: #101010;
+  background-repeat: no-repeat;
+  background-position: -450px -25px;
+  width: 250px;
+  height: 30px;
+  font-size: 16px;
+  /* Apenas Fx */
+  -moz-border-radius: 15px;
+  /* Apenas Safari */
+  -webkit-border-radius: 15px;
+}
+
+#pnlBanner #pnlBannerCenter
+{
+  background-image: url(../Common/Images/pletosfera2.jpg);
+  background-repeat: no-repeat;
+  margin-left: -800px;
+  left: 50%;
+  height: 220px;
+  width: 100%;
+  position: absolute;
+  z-index: 9998;
+}
+
+#listMenu
+{
+  left: 50%;
+  margin: 188px 0 0 -560px;
+  position: absolute;
+  list-style: none;
+  z-index: 9999;
+}
+
+#listMenu li
+{
+  width: 90px;
+  float: left;
+  height: 32px;
+  background: #990000;
+  margin-right: 5px;
+  border: 1px solid #38353a;
+}
+
+#listMenu li a
+{
+  display: block;
+  padding: 4px 2px 6px;
+  text-align: center;
+  width: 86px;
+  color: #FFF;
+  text-decoration: none;
+  font-size: 1em;
+  font-weight: normal;
+  background: #000000;
+  font-family: Verdana; 
+}
+
+#listMenu li.selected {
+  background: #101010;
+  border-bottom: #101010;
+}
+#listMenu li.selected a {
+  background: #101010;
+}
+
+#listMenu li.hover {
+  background: #DD0000;
+}
+#listMenu li.hover a{
+  background: #303030;
+}
+
+#pnlContainer
+{
+  font-weight: normal;
+  padding: 0 0 30px 0;
+  background: url(../Common/Images/bckHeader.jpg) bottom repeat-x;
+  border-bottom: 1px solid #38353a;
+  height: 555px;
+}
+
+#pnlContainer .mainContent
+{
+  width: 720px;
+  height: 496px;
+  margin: 0 0 0 -520px;
+  left: 50%;
+  position: absolute;
+  background-color: #000; /*#B6B8C7;*/
+  color: white;
+  font-weight:  normal;
+  font-family: Verdana;
+  font-size: 1.5em;
+  border: 1px solid #38353a;
+  border-top-width: 0; 
+  padding: 25px;
+  background-color: #101010;
+}
+
+#pnlContainer #about.mainContent img
+{
+  float: left;
+  margin: 0 10px 0 0;
+  border: 1px solid #9698A7;
+}
+
+#pnlContainer #contact.mainContent
+{
+  padding-top: 0;
+  height: 521px;
+}
+
+#pnlRight {
+  width: 190px;
+  margin: 0 0 0 270px;
+  left: 50%;
+  position: absolute;
+  border: 1px solid #38353a;
+  border-top-width: 0; 
+  padding: 10px;
+  color: white;
+  height: 525px;
+  background-color: #101010;
+  font-size: 1.5em;
+}
+
+#pnlRight a {
+  text-decoration: none;
+  color: white;
+}
+
+#pnlRight img {
+  vertical-align: middle;
+  margin: 10px;
+  border: 0;
+}
+
+
+#pnlFooter
+{
+  color: #B6B8C7;
+  text-align: center;
+  padding: 20px;
+  font-size: 13px;
+}
+
+#pnlFooter img
+{
+  vertical-align: middle;
+  margin-right: 20px;
+}
+
+#pnlFlags {
+  margin: 0 0 0 320px;
+  left: 50%;
+  position: absolute;
+}
+
+#pnlFlags a img {
+  vertical-align: top;
+  margin-top: 2px;
+}
+
+#pnlFlags a img {
+  border: 0;
+}
+
+#pnlFlags span {
+  float: left;
+  margin-top: -17px;
+  margin-left: 40px;
+}
+
+.clear {
+  clear: both;
+}
+
+#splash {
+  background-color: #010101;
+  position: absolute;
+  z-index: 10000; 
+  width: 100%;
+  height: 100%;
+}
+#splash img {
+  position: absolute; 
+  left: 50%; 
+  top: 50%; 
+  margin: -42px 0 0 -360px;
+}

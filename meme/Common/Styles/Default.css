@@ -1,0 +1,71 @@
+body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,input,textarea,p,blockquote,th,td {
+  margin:0;
+  padding:0;
+}
+
+body{
+  background-color: #e3ebef;
+  font-family: Arial, Helvetica, sans-serif;
+  color: #333;
+}
+
+h2{
+  margin-bottom: 10px;
+}
+
+.plus{
+  font-size: 60px;
+  margin: 0 50px 0 50px;
+}
+
+.header{
+  background-color: #FFFFFF;
+  padding: 20px;
+  text-align: center;
+}
+
+.install{
+  position: absolute;
+  right: 0;
+  font-weight: bold;
+  color: #333;
+  width: 115px;
+  padding: 0 15px 10px;
+  text-align: center;
+}
+
+#pnlFlags{
+  position: absolute;
+  right: 20px;
+  margin: -25px 0 0 0;
+}
+
+#pnlFlags img{
+  border: 0;
+}
+
+#pnlArticle{
+  width: 800px;
+  left: 50%;
+  position: absolute;
+  margin: 30px 0 0 -400px;
+  background-color: #fff;
+}
+
+.post{
+  padding: 30px 30px 30px 60px;
+  border: 1px solid #E3EBEF;
+}
+
+
+.post img{
+  position: absolute;
+  margin-left: -80px;
+}
+
+.footer{
+  background-color: #FFFFFF;
+  text-align: center;
+  margin-top: 790px;
+  padding: 10px;
+}

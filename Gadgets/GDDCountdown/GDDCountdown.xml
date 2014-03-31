@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Module>
+	<ModulePrefs title="GDD Brasil Countdown" 
+			 directory_title="Google Developer Day Brazil Countdown" 
+			 title_url="http://www.plets.com.br/" 
+			 description="Countdown to Google Developer Day Brazil." 
+			 author="Felipe Plets" 
+			 author_email="fsplets@gmail.com" 
+			 author_affiliation="iVirtua" 
+			 author_location="Montenegro, RS - Brasil" 
+			 screenshot="http://www.plets.com.br/Gadgets/GDDCountdown/screenshot.png" 
+			 thumbnail="http://www.plets.com.br/Gadgets/GDDCountdown/thumbnail.png"
+			 height="155"
+			 scrolling="false" 
+			 author_photo="http://plets.com.br/Gadgets/author_photo.png" 
+			 author_aboutme="Desenvolvedor Web desde 2000, iniciei meus estudos na área com 15 anos, quando utilizava o conhecimento em HTML e JavaScript apenas para criar páginas pessoais para mim e para meus amigos. Não demorou muito para que o hobbie se tornasse fonte de sustento. Hoje trabalho profissionalmente como Coordenador de Desenvolvimento Web utilizando tecnologia de ponta e as melhores práticas e técnicas disponíveis no mercado." 
+			 author_link="http://www.plets.com.br/" 
+			 author_quote="">
+		<Require feature="views" />
+		<Require feature="opensocial-0.7" />
+	</ModulePrefs>			 
+	<Content type="url" href="http://www.plets.com.br/Gadgets/GDDCountdown/GDDCountdown.html" view="profile,home"/>
+	<Content type="url" href="http://www.plets.com.br/Gadgets/GDDCountdown/GDDCountdown.html" view="canvas"/>
+</Module>

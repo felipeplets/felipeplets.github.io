@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Module>
+	<ModulePrefs title="GDD Brasil Countdown" 
+			 directory_title="Google Developer Day Brazil Countdown" 
+			 title_url="http://www.plets.com.br/" 
+			 description="Countdown to Google Developer Day Brazil." 
+			 author="Felipe Plets" 
+			 author_email="fsplets@gmail.com" 
+			 author_affiliation="iVirtua" 
+			 author_location="Montenegro, RS - Brasil" 
+			 screenshot="http://www.plets.com.br/Gadgets/GDDCountdown/screenshot.png" 
+			 thumbnail="http://www.plets.com.br/Gadgets/GDDCountdown/thumbnail.png"
+			 height="155"
+			 scrolling="false" 
+			 author_photo="http://plets.com.br/Gadgets/author_photo.png" 
+			 author_aboutme="Desenvolvedor Web há 8 anos, iniciei meus estudos na área com 15 anos, quando utilizava o conhecimento em HTML e JavaScript apenas para criar páginas pessoais para mim e para meus amigos. Não demorou muito para que o hobbie se tornasse fonte de sustento e foco de estudos. Hoje trabalho profissionalmente como Desenvolvedor Web, utilizando as melhores práticas e técnicas disponíveis no mercado." 
+			 author_link="http://www.plets.com.br/" 
+			 author_quote="">
+		<Require feature="views" />
+		<Require feature="opensocial-0.7" />
+		<Require feature="analytics" />
+	</ModulePrefs>			 
+	<Content type="html" view="profile,home,canvas">
+	<![CDATA[
+		<script type="text/javascript" >
+  			_IG_Analytics("UA-814118-3", "/GDDCountdown");
+		</script>
+		<table cellpadding="0" cellspacing="0" border="0" width="250px" style="left: 50%; margin-left: -125px; position: absolute;">
+			<tr>
+				<td width="150px">
+					<img src="http://www.plets.com.br/Gadgets/GDDCountdown/logo.gif" alt="image" width="137" height="101" />
+				</td>
+				<td style="text-align: left;">
+					<div id="cntdwn"></div>
+				</td>
+			</tr>
+			<tr>
+				<td colspan="2">
+					<a href="http://code.google.com/intl/pt-BR/events/developerday/2008/home.html" target="_blank">Google Developer Day 2008 Brasil</a>
+				</td>
+			</tr>
+		</table>		
+		<script type="text/javascript" src="http://www.plets.com.br/Gadgets/GDDCountdown/GDDCountdown.js"></script>
+	]]>
+	</Content>
+</Module>
