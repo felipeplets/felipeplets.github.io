@@ -4,10 +4,11 @@
 	<head>
 		<meta charset="utf-8">
 
-		<title>Bluetooth Low Energy 101</title>
+		<title>Avaliação de BLE em dispositivos de assistência médica</title>
 
-		<meta name="description" content="Bluetooth Low Energy 101">
+		<meta name="description" content="Avaliação de BLE em dispositivos de assistência médica">
 		<meta name="author" content="Felipe Plets">
+		<meta name="author" content="Tiago Marcos Alves">
 
 		<meta name="apple-mobile-web-app-capable" content="yes" />
 		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
@@ -15,7 +16,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
 		<link rel="stylesheet" href="reveal.js/css/reveal.min.css">
-		<link rel="stylesheet" href="reveal.js/css/theme/sky.css" id="theme">
+		<link rel="stylesheet" href="reveal.js/css/theme/Night.css" id="theme">
 
 		<!-- For syntax highlighting -->
 		<link rel="stylesheet" href="reveal.js/lib/css/zenburn.css">
@@ -43,7 +44,7 @@
 			<!-- Any section element inside of this container is displayed as a slide -->
 			<div class="slides">
 				<section>
-					<h1>Bluetooth <br />Low Energy</h1>
+					<h2>Avaliação de BLE em<br><br>dispositivos de assistência<br><br>médica</h2>
 					<br />
 					<br />
 					<p>
@@ -55,162 +56,44 @@
 					<h2>Agenda</h2>
 					<br />
 					<ol>
-						<li class="fragment">História (10min)<br><br></li>
-						<li class="fragment">Arquitetura (10min)<br><br></li>
-						<li class="fragment">Casos de uso (5min)</li>
+						<li class="fragment">Objetivos (2 min)<br><br></li>
+						<li class="fragment">Avaliação (6 min)<br><br></li>
+						<li class="fragment">Conclusão (2 min)</li>
 					</ol>
 				</section>
 
-				<section id="history">
-					<section id="history-main">
-						<h1>História</h1>
+				<section id="objetivos">
+					<section id="objetivos-main">
+						<h1>Objetivos</h1>
 					</section>
-					<section id="history-history-90">
-						<h2>Anos 90</h2>
+					<section id="objetivos-ecg">
+						<img src="img/ecg.jpg" />
+					</section>
+					<section id="objetivos-bl-ble">
+						<img src="img/bl-ble.png" />
+					</section>
+					<section id="objetivos-low-energy">
+						<h2>Bluetooth Low Energy</h2>
 						<br>
 						<ul>
-							<li class="fragment">1994 - Ericsson<br><br></li>
-							<li class="fragment">1997 - Nome do Bluetooth<br><br></li>
-							<li class="fragment">1998 - SIG fundado por Ericsson, Intel, Nokia, IBM e Toshiba<br><br></li>
-							<li class="fragment">1998 - SIG atinge 400 membros<br><br></li>
-							<li class="fragment">1999 - Bluetooth 1.0</li>
+							<li>Custo baixo, em torno de $1 por chip<br /><br /></li>
+							<li>Alcance de 100 metros<br /><br /></li>
+							<li>Licença é gratuíta<br /><br /></li>
+							<li>Criptografia 128 bit AES CCM<br /><br /></li>
+							<li>Pico máximo de 15µa e média de 1µa, possibilitando 2 anos de uso<br /><img src="img/coin_battery.jpg" style="border: 0;" width="20%" height="20%"></li>
 						</ul>
-					</section>
-					<section id="history-name1">
-						<img src="img/bl_name1.jpg">
-					</section>
-					<section id="history-name2">
-						<img src="img/bl_name2.jpg">
-					</section>
-					<section id="history-name3">
-						<img src="img/bl_name3.png">
-					</section>
-					<section id="history-00">
-						<h2>Past decade</h2>
-						<br>
-						<ul>
-							<li class="fragment">2000 - Primeiro telefone e PC<br /><br /></li>
-							<li class="fragment">2002 - v1.1 - padrão IEEE<br /><br /></li>
-							<li class="fragment">2003 - v1.2 - Mais rápido<br /><br /></li>
-							<li class="fragment">2004 - v2.0 - EDR<br /><br /></li>
-							<li class="fragment">2007 - v2.1 - Pareamento + Segurança<br /><br /></li>
-							<li class="fragment">2009 - v3.0 - HS (baseado no Wi-Fi)</li>
-						</ul>
-					</section>
-					<section id="history-10">
-						<h2>Current decade</h2>
-						<br>
-						<ul>
-							<li class="fragment">2010 - Bluetooth Smart (v4.0)<br />
-							Classic Bluetooth, Bluetooth high speed and Bluetooth low energy<br /><br /></li>
-							<li class="fragment">2011 - Grandes fabricantes de dispositivos começam a suportar a v4 (Apple e Microsoft)<br /><br /></li>
-							<li class="fragment">2013 - v4.1 - Internet Of Things</li>
-						</ul>
-					</section>
-					<section id="history-low-energy">
-						<h2>Smart e Low Energy</h2>
-						<br>
-						<ul>
-							<li class="fragment">Custo baixo, em torno de $1 por chip<br /><br /></li>
-							<li class="fragment">Alcance de 100 metros<br /><br /></li>
-							<li class="fragment">Licença é gratuíta<br /><br /></li>
-							<li class="fragment">Criptografia 128 bit AES CCM<br /><br /></li>
-							<li class="fragment">Pico máximo de 15µa e média de 1µa, possibilitando 2 anos de uso<br /><img src="img/coin_battery.jpg" style="border: 0;" width="20%" height="20%"></li>
-						</ul>
-					</section>
-					<section id="history-video">
-						<iframe width="854" height="510" src="//www.youtube.com/embed/-LWHbyTPA5Q" frameborder="0" allowfullscreen></iframe>
 					</section>
 				</section>
 
-				<section id="architecture"> 
-					<section id="architecture-main">
-						<h1>Arquitetura</h1>
-					</section>
-					<section id="architecture-basics">
-						<h2>Basico</h2>
-						<br>
-						<ul>
-							<li class="fragment">Arquitetura Cliente/Servidor<br /><br /></li>
-							<li class="fragment">Gateways Conectam dispositivos BLE com a internet<br /><br /><img src="img/gateway.png"></li>
-						</ul>
-					</section>
-					<section id="architecture-states-roles">
-						<h2>Estados e papéis</h2>
-						<br>
-						<img src="img/states_roles.png" />
-					</section>
-					<section id="architecture-simple-states">
-						<h2>Estados</h2>
-						<br>
-						<img src="img/simple_states.png" />
-					</section>
-					<section id="architecture-state">
-						<h2>Maquina de estados</h2>
-						<br>
-						<img src="img/state_machine.png" />
-					</section>
-					<section id="architecture-stack">
-						<h2>Pilha da arquitetura</h2>
-						<br>
-						<img src="img/architecture.png" />
-					</section>
-					<section id="architecture-gatt">
-						<h2>Generic Attribute Profile ou GATT</h2>
-						<br>
-						<img src="img/gatt.png" />
-					</section>
-					<section id="architecture-gatt-group">
-						<h2>Agrupamento GATT</h2>
-						<br>
-						<img src="img/gatt_group.png" />
-					</section>
-					<section id="architecture-gap">
-						<h2>Generic Access Profile ou GAP</h2>
-						<br>
-						<ul>
-							<li class="fragment">Define perfis de papéis
-								<ul>
-									<li>Broadcaster</li>
-									<li>Observer</li>
-									<li>Peripheral</li>
-									<li>Central</li>
-								</ul><br /><br />
-							</li>
-							<li class="fragment">Define procedimentos
-								<ul>
-									<li>Descoberta de identidades, nomes e possibilidades básicas</li>
-									<li>Cria vínculo</li>
-									<li>Troca de informações de segurança</li>
-									<li>Estabelece conexões</li>
-									<li>Resolve endereços</li>
-								</ul><br /><br />
-							</li>
-						</ul>
-					</section>
-					<section id="architecture-gap-profiles">
-						<h2>Perfis GAP</h2>
-						<br>
-						<img src="img/gap.png" />
+				<section id="avaliacao"> 
+					<section id="avaliacao-main">
+						<h1>Avaliação</h1>
 					</section>
 				</section>
-	
-				<section id="use-cases">
-					<section id="use-cases-main">
-						<h1>Casos de uso</h1>
-					</section>
-					<section id="use-cases-lifestyle" data-background="img/glass.jpg">
-					</section>
-					<section id="use-cases-sports" data-background="img/nike.jpg">
-					</section>
-					<section id="use-cases-security" data-background="img/security_kevo.jpg">
-					</section>
-					<section id="use-cases-healthcare" data-background="img/balance.png">
-					</section>
-					<section id="use-cases-location">
-						<iframe width="854" height="510" src="//www.youtube.com/embed/3QFrZjvp2E0" frameborder="0" allowfullscreen></iframe>
-					</section>
-					<section id="use-cases-ideas" data-background="img/ideas.png">
+
+				<section id="conclusao"> 
+					<section id="conclusao-main">
+						<h1>Conclusão</h1>
 					</section>
 				</section>
 
@@ -233,7 +116,7 @@
 			// Full list of configuration options available here:
 			// https://github.com/hakimel/reveal.js#configuration
 			Reveal.initialize({
-				controls: true,
+				controls: false,
 				progress: true,
 				history: true,
 				center: true,
@@ -242,8 +125,8 @@
 				transition: Reveal.getQueryHash().transition || 'linear', // default/cube/page/concave/zoom/linear/fade/none
 
 				// Parallax scrolling
-				// parallaxBackgroundImage: 'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg',
-				// parallaxBackgroundSize: '2100px 900px',
+				parallaxBackgroundImage: 'http://hdwallpappers.com/images/wallpapers/Spring_warm_rain_-_computer_background_photos.jpg',
+				parallaxBackgroundSize: '1920px 1200px',
 
 				// Optional libraries used to extend on reveal.js
 				dependencies: [
