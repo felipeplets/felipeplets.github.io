@@ -8,6 +8,10 @@
 /*********************************************
  * GLOBAL STYLES
  *********************************************/
+* {
+  text-shadow: 2px 2px #333 !important;
+}
+
 body {
   background: #111111;
   background-color: #111111; }
