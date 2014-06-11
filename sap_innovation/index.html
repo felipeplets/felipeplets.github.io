@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>Descoberta Adaptativa de Dispositivos em Redes Bletooth Low Energy</title>
+
+		<meta name="description" content="Avaliação de BLE em dispositivos de assistência médica">
+		<meta name="author" content="Felipe Plets">
+
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<link rel="stylesheet" href="reveal.js/css/reveal.min.css">
+		<link rel="stylesheet" href="reveal.js/css/theme/serif.css" id="theme">
+
+		<!-- For syntax highlighting -->
+		<link rel="stylesheet" href="reveal.js/lib/css/zenburn.css">
+
+		<!-- If the query includes 'print-pdf', include the PDF print sheet -->
+		<script>
+			if( window.location.search.match( /print-pdf/gi ) ) {
+				var link = document.createElement( 'link' );
+				link.rel = 'stylesheet';
+				link.type = 'text/css';
+				link.href = 'reveal.js/css/print/pdf.css';
+				document.getElementsByTagName( 'head' )[0].appendChild( link );
+			}
+		</script>
+
+		<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+	</head>
+
+	<body>
+
+		<div class="reveal">
+
+			<!-- Any section element inside of this container is displayed as a slide -->
+			<div class="slides">
+				<section data-background="#FFFFFF">
+					<h2>Felipe Plets</h2>
+					<a href="www.plets.com.br">plets.com.br</a>
+				</section>
+				<section data-background="#FFFFFF">
+					<img src="img/sap_logo.png" width="50%" style="border: 0; box-shadow: none;"><br><br><br><br>
+				</section>
+				<section data-background="#FFFFFF">
+					<section data-background="#FFFFFF">
+						<h1>1 - Escolhas</h1>
+					</section>
+					<section data-background="#FFFFFF">
+						<img src="img/question_mark.png" style="border: 0; box-shadow: none;">
+					</section>
+				</section>
+				<section data-background="#FFFFFF">
+					<section data-background="#FFFFFF">
+						<h1>2 - Processos</h1>
+					</section>
+					<section data-background="#FFFFFF">
+						<img src="img/dt.jpeg" style="border: 0; box-shadow: none;">
+					</section>
+				</section>
+				<section data-background="#FFFFFF">
+					<section data-background="#FFFFFF">
+						<h1>3 - Inovação</h1>
+					</section>
+					<section data-background="img/glass.jpg">
+					</section>
+					<section data-background="img/nike.jpg">
+					</section>
+					<section data-background="img/fiori.jpg">
+					</section>
+				</section>
+				<section data-background="#FFFFFF">
+					<h1>Obrigado!</h1>
+					<br><br><br><br>
+					<h2>Felipe Plets</h2><br>
+					<h3>fsplets@gmail.com<br><br>@FelipePlets</h3>
+				</section>
+			</div>
+		</div>
+
+		<script src="reveal.js/lib/js/head.min.js"></script>
+		<script src="reveal.js/js/reveal.min.js"></script>
+
+		<script>
+
+			// Full list of configuration options available here:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: false,
+				progress: true,
+				history: true,
+				center: true,
+				theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+				transition: Reveal.getQueryHash().transition || 'zoom', // default/cube/page/concave/zoom/linear/fade/none
+
+				// Optional libraries used to extend on reveal.js
+				dependencies: [
+					{ src: 'reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: 'reveal.js/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'reveal.js/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'reveal.js/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'reveal.js/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+					{ src: 'reveal.js/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+				]
+			});
+
+		</script>
+
+	</body>
+</html>
