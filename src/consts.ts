@@ -4,7 +4,7 @@ export const SITE = {
   title: 'Felipe Plets — Engineering leadership for the agentic era',
   tagline: 'Engineering leadership for the agentic era',
   description:
-    'Felipe Plets is an engineering leader in Toronto writing about AI-native teams, agentic engineering, and designing practices so software quality does not drift as velocity increases.',
+    'Felipe Plets is an engineering leader and founder in Toronto writing about AI-native teams, agentic engineering, and designing practices so software quality does not drift as velocity increases.',
   locale: 'en',
   author: 'Felipe Plets',
 } as const;

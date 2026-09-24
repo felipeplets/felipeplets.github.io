@@ -55,7 +55,7 @@ export const ENGAGEMENTS: Engagement[] = [
   {
     title: 'Advisory',
     description:
-      'Working with engineering leaders on delivery practices, quality strategy and the operating model behind them.',
+      'Working with engineering leaders on delivery practices, quality strategy and the operating model behind them, informed by having built companies as well as run engineering inside them.',
   },
 ];
 

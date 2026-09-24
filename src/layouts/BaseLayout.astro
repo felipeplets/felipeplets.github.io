@@ -30,7 +30,7 @@ const personSchema = {
   '@type': 'Person',
   name: SITE.author,
   url: SITE.url,
-  jobTitle: 'Engineering Leader & AI Delivery Advisor',
+  jobTitle: ['Engineering Leader', 'Founder', 'AI Delivery Advisor'],
   description: SITE.description,
   sameAs: SOCIALS.map((s) => s.url),
   knowsAbout: [
@@ -81,7 +81,11 @@ const personSchema = {
       document.documentElement.classList.add('js');
     </script>
 
-    <set:html value={`<script type="application/ld+json">${JSON.stringify(personSchema)}</script>`} />
+    <script
+      type="application/ld+json"
+      is:inline
+      set:html={JSON.stringify(personSchema).replace(/</g, '\\u003c')}
+    />
 
     <!--
       ANALYTICS INSERTION POINT
