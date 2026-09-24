@@ -31,15 +31,18 @@ Most copy lives in a small number of files, so you rarely need to touch layout c
 - `src/consts.ts` — site title, description, Substack details, social links, nav
 - `src/content/site-content.ts` — the four practice pillars, engagement formats, and the
   cited statistics (keep the `source` field accurate)
-- `src/components/Hero.astro`, `About.astro`, `Thesis.astro`, `Contact.astro` — home page prose
-- `src/pages/about.astro`, `src/pages/speaking.astro` — standalone page copy
+- `src/components/Hero.astro`, `About.astro`, `Thesis.astro`, `Contact.astro` — section prose
+
+Everything lives on one page. `src/pages/index.astro` composes the sections in order, and
+every navigation link is an in-page anchor, so adding a section means adding a component
+with an `id` and a matching entry in `NAV`. The only other route is the 404 page.
 - `src/assets/` — photography, optimized automatically by Astro at build time
 
 ### Contact email
 
-`CONTACT_EMAIL` in `src/consts.ts` is `null`, so the contact section and the speaking CTA
-route to LinkedIn. Set it to a real address once a mailbox exists and an email channel
-appears automatically in both places — no other edits needed.
+`CONTACT_EMAIL` in `src/consts.ts` is `null`, so the contact section routes to LinkedIn.
+Set it to a real address and an email channel appears there automatically — no other edits
+needed.
 
 ### Writing
 

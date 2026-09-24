@@ -1,13 +1,27 @@
 ---
 import { Image } from 'astro:assets';
 import Section from './Section.astro';
-import Button from './Button.astro';
 import portrait from '../assets/felipe-plets-portrait.jpg';
 
 const facts = [
   { label: 'Writing code since', value: '1999' },
   { label: 'Leading teams since', value: '2006' },
   { label: 'Based in', value: 'Toronto' },
+];
+
+const chapters = [
+  {
+    title: 'Where it started',
+    body: 'I started programming in 1999, tinkering with JavaScript because it was the fastest way to make something real appear on a screen. It never stopped being that. Since then I have shipped production systems in Delphi, PHP, C#, Swift, Kotlin, Python, Ruby, ABAP, Java and, still, a great deal of JavaScript. Along the way I published academic work on ubiquitous computing, including a collaborative telemedicine system built to improve diagnosis quality where doctors were scarce.',
+  },
+  {
+    title: 'Leading teams',
+    body: 'I have been in leadership roles since 2006: developer, team lead, coach, consultant. Different titles, the same job. Helping teams design a development lifecycle that produces consistent gains in productivity, quality, performance and security, then holding the line on it. I have done that with teams in several countries and in every arrangement you can name, from co-located rooms to groups spread across time zones to fully remote organizations.',
+  },
+  {
+    title: 'What I focus on now',
+    body: 'Today I work as a director of engineering and write about the shift happening around all of us. The promise of AI-assisted and agentic development is real, and so is the failure mode: organizations that get dramatically faster at producing code they no longer understand. My work is about taking the first outcome without the second, and most weeks I am comparing notes with other engineering leaders living exactly that problem.',
+  },
 ];
 ---
 
@@ -18,33 +32,15 @@ const facts = [
         Since 1999, circling the same question.
       </h2>
 
-      <div class="mt-8 space-y-6 text-lg leading-relaxed text-muted">
-        <p>
-          I started programming in 1999, tinkering with JavaScript because it was the
-          fastest way to make something real appear on a screen. That instinct never left.
-          Since then I have shipped production systems in Delphi, PHP, C#, Swift, Kotlin,
-          Python, Ruby, ABAP, Java and, still, a great deal of JavaScript.
-        </p>
-        <p>
-          I have been in leadership roles since 2006: developer, team lead, coach,
-          consultant. Different titles, the same job. Helping teams design a development
-          lifecycle that produces consistent gains in productivity, quality, performance
-          and security, and then actually holding the line on it. I have done that with
-          teams in several countries and in every arrangement you can name, from
-          co-located rooms to distributed groups spread across time zones to fully remote
-          organizations.
-        </p>
-        <p>
-          Today I work as a director of engineering, and I write about the shift happening
-          around all of us. The promise of AI-assisted and agentic development is real, and
-          so is the failure mode: organizations that get dramatically faster at producing
-          code they no longer understand. My work is about taking the first outcome without
-          the second.
-        </p>
-      </div>
-
-      <div class="mt-10">
-        <Button href="/about" variant="ghost" withArrow>More about my background</Button>
+      <div class="mt-10 space-y-9">
+        {
+          chapters.map((chapter) => (
+            <div>
+              <h3 class="font-display text-xl text-bone">{chapter.title}</h3>
+              <p class="mt-3 text-lg leading-relaxed text-muted">{chapter.body}</p>
+            </div>
+          ))
+        }
       </div>
     </div>
 
