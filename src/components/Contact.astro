@@ -6,19 +6,32 @@ const linkedin = SOCIALS.find((s) => s.name === 'LinkedIn')!;
 const github = SOCIALS.find((s) => s.name === 'GitHub')!;
 
 const channels = [
-  {
-    label: 'Email',
-    value: CONTACT_EMAIL,
-    href: `mailto:${CONTACT_EMAIL}`,
-    icon: 'mail' as const,
-    note: 'Best for speaking enquiries and advisory work.',
-  },
+  ...(CONTACT_EMAIL
+    ? [
+        {
+          label: 'Email',
+          value: CONTACT_EMAIL,
+          href: `mailto:${CONTACT_EMAIL}`,
+          icon: 'mail' as const,
+          note: 'Best for speaking enquiries and advisory work.',
+          external: false,
+        },
+      ]
+    : []),
   {
     label: 'LinkedIn',
     value: '/in/felipeplets',
     href: linkedin.url,
     icon: 'linkedin' as const,
-    note: 'Where most conversations actually start.',
+    note: 'Best for speaking enquiries and advisory work.',
+    external: true,
+  },
+  {
+    label: 'Substack',
+    value: SUBSTACK.name,
+    href: SUBSTACK.url,
+    icon: 'substack' as const,
+    note: 'Subscribe, then just reply to any issue.',
     external: true,
   },
   {

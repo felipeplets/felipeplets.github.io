@@ -31,4 +31,8 @@ export const NAV = [
   { label: 'Contact', href: '/#contact' },
 ] as const;
 
-export const CONTACT_EMAIL = 'hello@felipeplets.com';
+/**
+ * Public contact address. Left null until a real mailbox exists — set it to a
+ * string to add an email channel to the contact section and speaking CTA.
+ */
+export const CONTACT_EMAIL: string | null = null;

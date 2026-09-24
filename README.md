@@ -28,12 +28,18 @@ npm run dev      # http://localhost:4321
 
 Most copy lives in a small number of files, so you rarely need to touch layout code.
 
-- `src/consts.ts` — site title, description, Substack details, social links, nav, contact email
+- `src/consts.ts` — site title, description, Substack details, social links, nav
 - `src/content/site-content.ts` — the four practice pillars, engagement formats, and the
   cited statistics (keep the `source` field accurate)
 - `src/components/Hero.astro`, `About.astro`, `Thesis.astro`, `Contact.astro` — home page prose
 - `src/pages/about.astro`, `src/pages/speaking.astro` — standalone page copy
 - `src/assets/` — photography, optimized automatically by Astro at build time
+
+### Contact email
+
+`CONTACT_EMAIL` in `src/consts.ts` is `null`, so the contact section and the speaking CTA
+route to LinkedIn. Set it to a real address once a mailbox exists and an email channel
+appears automatically in both places — no other edits needed.
 
 ### Writing
 

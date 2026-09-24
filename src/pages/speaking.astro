@@ -3,8 +3,11 @@ import { Image } from 'astro:assets';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Button from '../components/Button.astro';
 import { ENGAGEMENTS } from '../content/site-content';
-import { SITE, CONTACT_EMAIL } from '../consts';
+import { SITE, CONTACT_EMAIL, SOCIALS } from '../consts';
 import speakingPhoto from '../assets/felipe-plets-speaking.jpg';
+
+const linkedin = SOCIALS.find((s) => s.name === 'LinkedIn')!;
+const contactHref = CONTACT_EMAIL ? `mailto:${CONTACT_EMAIL}` : linkedin.url;
 
 const topics = [
   {
@@ -138,7 +141,9 @@ const pastTalks = [
           honestly whether I am the right person for it.
         </p>
         <div class="mt-8 flex flex-wrap gap-4">
-          <Button href={`mailto:${CONTACT_EMAIL}`} withArrow>Start a conversation</Button>
+          <Button href={contactHref} external={!CONTACT_EMAIL} withArrow>
+            Start a conversation
+          </Button>
           <Button href="/#practice" variant="ghost">See what I focus on</Button>
         </div>
       </div>
