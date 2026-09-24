@@ -3,7 +3,9 @@ name: Deploy to GitHub Pages
 on:
   push:
     branches: [master]
-  # The Substack feed is fetched at build time, so rebuild daily to pick up new posts.
+  # Attempt a daily feed refresh. Substack's Cloudflare currently answers 403 to Actions
+  # runners, so this normally rebuilds from the committed snapshot in
+  # src/content/substack-cache.json. It self-heals if that block is ever lifted.
   schedule:
     - cron: '0 11 * * *'
   workflow_dispatch:

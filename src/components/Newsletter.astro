@@ -5,7 +5,7 @@ import Icon from './Icon.astro';
 import { SUBSTACK } from '../consts';
 import { getSubstackPosts, formatDate } from '../lib/substack';
 
-const posts = await getSubstackPosts(4);
+const posts = getSubstackPosts(4);
 ---
 
 <Section

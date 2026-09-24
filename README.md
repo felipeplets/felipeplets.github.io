@@ -47,14 +47,34 @@ needed.
 ### Writing
 
 There is no blog in this repo. Posts live on
-[All You Can Lead](https://allyoucanlead.substack.com) and the home page pulls the four
-most recent from the Substack RSS feed **at build time** (`src/lib/substack.ts`). That
-keeps the site fully static with no client-side fetching or CORS workarounds.
+[All You Can Lead](https://allyoucanlead.substack.com) and the home page renders the four
+most recent, so the site stays fully static with no client-side fetching or CORS
+workarounds.
 
-Because the fetch happens at build time, a new Substack post only appears after a rebuild.
-The deploy workflow runs on a daily schedule for exactly this reason, and you can always
-trigger it manually from the Actions tab. If the feed is unreachable the build still
-succeeds — the section just renders the subscribe CTA without the post list.
+The feed is **not** fetched while rendering. `npm run feed` (which `npm run build` runs
+first) pulls the Substack RSS feed, falls back to Substack's archive endpoint, and writes
+`src/content/substack-cache.json`. That snapshot is committed, and `src/lib/substack.ts`
+only reads it.
+
+That indirection exists for a concrete reason: Substack sits behind Cloudflare, which
+answers **403 to GitHub Actions runners** on both the RSS feed and the archive endpoint,
+while the identical request succeeds from a laptop. Browser-like headers and retries did
+not change it, so it is IP reputation rather than the user-agent. The first production
+build silently shipped with no posts at all. Reading a committed snapshot means CI can
+never lose the list, and builds are deterministic and work offline.
+
+Practically, that means **a new Substack post appears once a build runs somewhere that can
+reach the feed**, normally your machine:
+
+```sh
+npm run build                      # refreshes the snapshot as its first step
+git commit -am "Refresh feed" && git push
+```
+
+The deploy workflow still runs `npm run feed` daily on a schedule. Today that call is
+refused and the committed snapshot is used unchanged, but if Substack ever stops blocking
+the runners the site will start refreshing itself with no further changes. A failed
+refresh only warns; it never fails the build.
 
 ## Design
 

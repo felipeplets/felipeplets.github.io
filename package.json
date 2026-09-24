@@ -3,14 +3,15 @@
   "type": "module",
   "version": "2.0.0",
   "private": true,
-  "description": "Personal site of Felipe Plets — thought leadership on shipping high-quality software with AI.",
+  "description": "Personal site of Felipe Plets \u2014 thought leadership on shipping high-quality software with AI.",
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",
-    "build": "astro check && astro build",
+    "build": "npm run feed && astro check && astro build",
     "preview": "astro preview",
     "assets": "node scripts/generate-assets.mjs",
-    "astro": "astro"
+    "astro": "astro",
+    "feed": "node scripts/refresh-feed.mjs"
   },
   "dependencies": {
     "@astrojs/check": "^0.9.10",
