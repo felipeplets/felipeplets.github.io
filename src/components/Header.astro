@@ -1,0 +1,117 @@
+---
+import { NAV, SUBSTACK } from '../consts';
+---
+
+<header
+  id="site-header"
+  class="fixed inset-x-0 top-0 z-50 transition-all duration-500 ease-[var(--ease-out-soft)]"
+>
+  <div class="mx-auto flex max-w-6xl items-center justify-between px-6 py-5 lg:px-8">
+    <a
+      href="/"
+      class="font-display text-lg tracking-tight text-bone transition-colors hover:text-amber"
+    >
+      Felipe&nbsp;Plets
+    </a>
+
+    <nav aria-label="Primary" class="hidden items-center gap-8 md:flex">
+      {
+        NAV.map((item) => (
+          <a
+            href={item.href}
+            class="link-underline text-sm text-muted transition-colors hover:text-bone"
+          >
+            {item.label}
+          </a>
+        ))
+      }
+      <a
+        href={SUBSTACK.url}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="rounded-full border border-copper/50 px-4 py-2 text-sm text-amber transition-colors duration-300 hover:bg-copper hover:text-ink"
+      >
+        Newsletter
+      </a>
+    </nav>
+
+    <button
+      type="button"
+      id="menu-toggle"
+      class="flex h-10 w-10 items-center justify-center rounded-full border border-line-strong text-bone md:hidden"
+      aria-expanded="false"
+      aria-controls="mobile-menu"
+      aria-label="Open menu"
+    >
+      <span class="sr-only">Toggle navigation</span>
+      <svg
+        viewBox="0 0 24 24"
+        class="h-5 w-5"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="1.6"
+        stroke-linecap="round"
+        aria-hidden="true"
+      >
+        <path d="M4 7h16M4 12h16M4 17h16"></path>
+      </svg>
+    </button>
+  </div>
+
+  <div
+    id="mobile-menu"
+    hidden
+    class="border-t border-line bg-ink/95 backdrop-blur md:hidden"
+  >
+    <nav aria-label="Mobile" class="mx-auto flex max-w-6xl flex-col gap-1 px-6 py-4">
+      {
+        NAV.map((item) => (
+          <a href={item.href} class="border-b border-line/60 py-3 text-base text-muted hover:text-bone">
+            {item.label}
+          </a>
+        ))
+      }
+      <a
+        href={SUBSTACK.url}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="py-3 text-base text-amber"
+      >
+        Newsletter
+      </a>
+    </nav>
+  </div>
+</header>
+
+<script>
+  const header = document.getElementById('site-header');
+  const toggle = document.getElementById('menu-toggle');
+  const menu = document.getElementById('mobile-menu');
+
+  const applyScrollState = () => {
+    if (!header) return;
+    header.classList.toggle('bg-ink/85', window.scrollY > 24);
+    header.classList.toggle('backdrop-blur-md', window.scrollY > 24);
+    header.classList.toggle('border-b', window.scrollY > 24);
+    header.classList.toggle('border-line', window.scrollY > 24);
+  };
+
+  applyScrollState();
+  window.addEventListener('scroll', applyScrollState, { passive: true });
+
+  toggle?.addEventListener('click', () => {
+    if (!menu) return;
+    const open = menu.hidden;
+    menu.hidden = !open;
+    toggle.setAttribute('aria-expanded', String(open));
+    toggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+  });
+
+  menu?.addEventListener('click', (event) => {
+    if ((event.target as HTMLElement).tagName === 'A') {
+      menu.hidden = true;
+      toggle?.setAttribute('aria-expanded', 'false');
+      toggle?.setAttribute('aria-label', 'Open menu');
+    }
+  });
+</script>

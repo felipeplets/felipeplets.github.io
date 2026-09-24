@@ -1,0 +1,93 @@
+---
+import Section from './Section.astro';
+import Button from './Button.astro';
+import Icon from './Icon.astro';
+import { SUBSTACK } from '../consts';
+import { getSubstackPosts, formatDate } from '../lib/substack';
+
+const posts = await getSubstackPosts(4);
+---
+
+<Section
+  id="writing"
+  eyebrow="Writing"
+  title="All You Can Lead"
+  lead={SUBSTACK.description}
+>
+  <div class="mt-10" data-reveal>
+    <!--
+      LEAD GENERATION INSERTION POINT
+      This currently links straight to Substack. To capture leads on-site later,
+      replace this block with the chosen provider's embed or a POST form; nothing
+      else on the page depends on it.
+    -->
+    <div
+      class="flex flex-col gap-6 rounded-2xl border border-copper/25 bg-gradient-to-br from-ink-soft to-ink p-8 sm:flex-row sm:items-center sm:justify-between lg:p-10"
+    >
+      <div class="max-w-lg">
+        <p class="font-display text-2xl text-bone">Get it in your inbox</p>
+        <p class="mt-2 text-sm leading-relaxed text-muted">
+          Essays on leadership, AI-assisted delivery and the craft of building software
+          that lasts. No spam, unsubscribe anytime.
+        </p>
+      </div>
+      <Button href={SUBSTACK.url} external withArrow class="shrink-0">Subscribe free</Button>
+    </div>
+  </div>
+
+  {
+    posts.length > 0 && (
+      <>
+        <div class="mt-16 flex items-baseline justify-between gap-6" data-reveal>
+          <h3 class="text-xl text-bone">Latest essays</h3>
+          <a
+            href={`${SUBSTACK.url}/archive`}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="group inline-flex items-center gap-2 text-sm text-muted transition-colors hover:text-amber"
+          >
+            <span class="link-underline">All posts</span>
+            <Icon
+              name="arrow"
+              class="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1"
+            />
+          </a>
+        </div>
+
+        <ul class="mt-8 divide-y divide-line border-y border-line">
+          {posts.map((post) => (
+            <li data-reveal>
+              <a
+                href={post.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="group flex flex-col gap-4 py-7 transition-colors duration-300 sm:flex-row sm:items-start sm:gap-8"
+              >
+                <time
+                  datetime={Number.isNaN(post.date.getTime()) ? undefined : post.date.toISOString()}
+                  class="shrink-0 pt-1 text-xs uppercase tracking-[0.14em] text-faint sm:w-36"
+                >
+                  {formatDate(post.date)}
+                </time>
+
+                <div class="flex-1">
+                  <h4 class="text-xl leading-snug text-bone transition-colors duration-300 group-hover:text-amber">
+                    {post.title}
+                  </h4>
+                  {post.excerpt && (
+                    <p class="mt-2 text-sm leading-relaxed text-muted">{post.excerpt}</p>
+                  )}
+                </div>
+
+                <Icon
+                  name="arrow"
+                  class="mt-1 hidden h-4 w-4 shrink-0 text-faint transition-all duration-300 group-hover:translate-x-1 group-hover:text-copper sm:block"
+                />
+              </a>
+            </li>
+          ))}
+        </ul>
+      </>
+    )
+  }
+</Section>

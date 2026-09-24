@@ -1,0 +1,130 @@
+---
+import '@fontsource-variable/inter/wght.css';
+import '@fontsource-variable/fraunces/opsz.css';
+import '../styles/global.css';
+
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import { SITE, SOCIALS } from '../consts';
+
+interface Props {
+  title?: string;
+  description?: string;
+  /** Path to an OG image relative to the site root. */
+  image?: string;
+  noindex?: boolean;
+}
+
+const {
+  title = SITE.title,
+  description = SITE.description,
+  image = '/og-image.png',
+  noindex = false,
+} = Astro.props;
+
+const canonical = new URL(Astro.url.pathname.replace(/\/$/, '') || '/', Astro.site);
+const ogImage = new URL(image, Astro.site);
+
+const personSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  name: SITE.author,
+  url: SITE.url,
+  jobTitle: 'Engineering Leader & AI Delivery Advisor',
+  description: SITE.description,
+  sameAs: SOCIALS.map((s) => s.url),
+  knowsAbout: [
+    'Agentic coding',
+    'AI-assisted software development',
+    'Software quality engineering',
+    'Engineering leadership',
+    'Developer productivity',
+  ],
+};
+---
+
+<!doctype html>
+<html lang={SITE.locale} class="scroll-smooth">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="generator" content={Astro.generator} />
+
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    {noindex && <meta name="robots" content="noindex, nofollow" />}
+
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content={SITE.name} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:locale" content="en_US" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImage} />
+
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="icon" href="/favicon.ico" sizes="32x32" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <meta name="theme-color" content="#0b0f14" />
+
+    <link rel="alternate" type="application/rss+xml" title="All You Can Lead" href="https://allyoucanlead.substack.com/feed" />
+
+    <script is:inline>
+      // Flag JS availability so scroll-reveal styles only apply when they can be undone.
+      document.documentElement.classList.add('js');
+    </script>
+
+    <set:html value={`<script type="application/ld+json">${JSON.stringify(personSchema)}</script>`} />
+
+    <!--
+      ANALYTICS INSERTION POINT
+      Add the analytics snippet here when tracking is introduced. Nothing
+      third-party ships today, which keeps the site cookie-banner-free.
+    -->
+  </head>
+  <body class="min-h-screen antialiased">
+    <a
+      href="#main"
+      class="sr-only focus:not-sr-only focus:absolute focus:left-6 focus:top-6 focus:z-[60] focus:rounded-full focus:bg-copper focus:px-5 focus:py-3 focus:text-sm focus:text-ink"
+    >
+      Skip to content
+    </a>
+
+    <Header />
+
+    <main id="main">
+      <slot />
+    </main>
+
+    <Footer />
+
+    <script>
+      const revealables = document.querySelectorAll('[data-reveal]');
+
+      if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches && 'IntersectionObserver' in window) {
+        const observer = new IntersectionObserver(
+          (entries) => {
+            for (const entry of entries) {
+              if (entry.isIntersecting) {
+                entry.target.classList.add('is-visible');
+                observer.unobserve(entry.target);
+              }
+            }
+          },
+          { rootMargin: '0px 0px -10% 0px', threshold: 0.1 }
+        );
+
+        revealables.forEach((el) => observer.observe(el));
+      } else {
+        revealables.forEach((el) => el.classList.add('is-visible'));
+      }
+    </script>
+  </body>
+</html>

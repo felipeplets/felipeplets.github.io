@@ -1,0 +1,31 @@
+---
+interface Props {
+  id?: string;
+  eyebrow?: string;
+  title?: string;
+  lead?: string;
+  class?: string;
+  /** Renders a hairline rule above the section. */
+  divider?: boolean;
+}
+
+const { id, eyebrow, title, lead, class: className = '', divider = true } = Astro.props;
+---
+
+<section id={id} class={`scroll-mt-24 ${className}`}>
+  <div class="mx-auto max-w-6xl px-6 py-24 lg:px-8 lg:py-32">
+    {divider && <div class="rule mb-16"></div>}
+
+    {
+      (eyebrow || title || lead) && (
+        <div class="max-w-2xl" data-reveal>
+          {eyebrow && <p class="eyebrow">{eyebrow}</p>}
+          {title && <h2 class="mt-4 text-3xl leading-tight sm:text-4xl lg:text-5xl">{title}</h2>}
+          {lead && <p class="mt-6 text-lg leading-relaxed text-muted">{lead}</p>}
+        </div>
+      )
+    }
+
+    <slot />
+  </div>
+</section>

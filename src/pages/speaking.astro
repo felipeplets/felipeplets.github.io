@@ -1,0 +1,147 @@
+---
+import { Image } from 'astro:assets';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Button from '../components/Button.astro';
+import { ENGAGEMENTS } from '../content/site-content';
+import { SITE, CONTACT_EMAIL } from '../consts';
+import speakingPhoto from '../assets/felipe-plets-speaking.jpg';
+
+const topics = [
+  {
+    title: 'Quality doesn\u2019t scale by accident',
+    description:
+      'Why average code quality drifts downward when generation gets cheap, and the guardrails that actually hold — planning, architecture, review that scales, and honest measurement.',
+  },
+  {
+    title: 'Building AI-native teams',
+    description:
+      'Moving a team past treating AI like a better search engine: collaboration patterns, redefining what good work looks like, and setting expectations around privacy, accountability and speed.',
+  },
+  {
+    title: 'Alignment in the age of models',
+    description:
+      'Organizations have always spent effort keeping humans aligned. What changes when part of the team is a model, and why misaligned teams get inconsistent results no matter how capable the tools are.',
+  },
+  {
+    title: 'Leading with evidence, not vibes',
+    description:
+      'How engineering leaders can make defensible decisions about AI tooling in a landscape where the state of the art changes every few weeks.',
+  },
+];
+
+const pastTalks = [
+  { year: '2013', title: 'Agile & Design Thinking', context: 'AppStartup' },
+  { year: '2011', title: 'Mentalmente \u00c1gil', context: 'Tchelinux, Bento Gon\u00e7alves' },
+  { year: '2008', title: 'Widgets', context: 'Tchelinux' },
+];
+---
+
+<BaseLayout
+  title={`Speaking — ${SITE.name}`}
+  description="Talks and workshops on AI-native engineering teams, software quality at speed, and leading through the agentic shift."
+>
+  <section class="border-b border-line">
+    <div class="mx-auto max-w-6xl px-6 pb-20 pt-40 lg:px-8 lg:pt-48">
+      <div class="grid items-center gap-12 lg:grid-cols-[1.1fr_1fr] lg:gap-16">
+        <div>
+          <p class="eyebrow" data-reveal>Speaking</p>
+          <h1 class="mt-5 text-4xl leading-[1.1] sm:text-5xl lg:text-6xl" data-reveal>
+            Conversations worth having with your engineering org.
+          </h1>
+          <p class="mt-8 max-w-2xl text-lg leading-relaxed text-muted" data-reveal>
+            I speak at conferences and inside engineering organizations about what genuinely
+            changes when AI joins the team &mdash; and about the parts of the craft that
+            stubbornly do not.
+          </p>
+        </div>
+
+        <figure class="relative overflow-hidden rounded-2xl border border-line" data-reveal>
+          <Image
+            src={speakingPhoto}
+            alt="Felipe Plets speaking into a studio microphone during a radio interview"
+            widths={[480, 720, 1040]}
+            sizes="(min-width: 1024px) 32rem, 90vw"
+            class="h-auto w-full object-cover contrast-[1.02] saturate-[0.85]"
+            loading="eager"
+          />
+          <div
+            class="pointer-events-none absolute inset-0 bg-gradient-to-t from-ink/80 via-ink/10 to-transparent"
+          >
+          </div>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="mx-auto max-w-4xl px-6 py-20 lg:px-8 lg:py-24">
+      <h2 class="text-2xl" data-reveal>Topics</h2>
+
+      <div class="mt-10 grid gap-px overflow-hidden rounded-2xl border border-line bg-line sm:grid-cols-2">
+        {
+          topics.map((topic) => (
+            <article class="bg-ink p-8 transition-colors duration-500 hover:bg-ink-soft" data-reveal>
+              <h3 class="text-xl leading-snug">{topic.title}</h3>
+              <p class="mt-3 text-[0.975rem] leading-relaxed text-muted">{topic.description}</p>
+            </article>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <section class="border-t border-line bg-ink-soft/30">
+    <div class="mx-auto max-w-4xl px-6 py-20 lg:px-8 lg:py-24">
+      <h2 class="text-2xl" data-reveal>Formats</h2>
+
+      <div class="mt-10 grid gap-10 sm:grid-cols-3 sm:gap-8">
+        {
+          ENGAGEMENTS.map((item) => (
+            <article data-reveal>
+              <div class="h-px w-12 bg-copper" />
+              <h3 class="mt-6 text-lg leading-snug">{item.title}</h3>
+              <p class="mt-3 text-sm leading-relaxed text-muted">{item.description}</p>
+            </article>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="mx-auto max-w-4xl px-6 py-20 lg:px-8 lg:py-24">
+      <h2 class="text-2xl" data-reveal>Earlier talks</h2>
+      <p class="mt-3 text-sm text-muted" data-reveal>
+        A few from the archive &mdash; I have been doing this for a while.
+      </p>
+
+      <ul class="mt-10 divide-y divide-line border-y border-line">
+        {
+          pastTalks.map((talk) => (
+            <li class="flex flex-col gap-1 py-5 sm:flex-row sm:items-baseline sm:gap-8" data-reveal>
+              <span class="shrink-0 text-xs uppercase tracking-[0.14em] text-faint sm:w-20">
+                {talk.year}
+              </span>
+              <span class="flex-1 text-base text-bone">{talk.title}</span>
+              <span class="text-sm text-muted">{talk.context}</span>
+            </li>
+          ))
+        }
+      </ul>
+
+      <div class="rule my-16"></div>
+
+      <div data-reveal>
+        <h2 class="text-2xl">Invite me to speak</h2>
+        <p class="mt-4 max-w-xl text-lg leading-relaxed text-muted">
+          Tell me about your audience and what they are wrestling with, and I will tell you
+          honestly whether I am the right person for it.
+        </p>
+        <div class="mt-8 flex flex-wrap gap-4">
+          <Button href={`mailto:${CONTACT_EMAIL}`} withArrow>Start a conversation</Button>
+          <Button href="/#practice" variant="ghost">See what I focus on</Button>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

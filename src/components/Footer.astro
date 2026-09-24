@@ -1,0 +1,60 @@
+---
+import Icon from './Icon.astro';
+import { SITE, SOCIALS, SUBSTACK } from '../consts';
+
+const year = new Date().getFullYear();
+---
+
+<footer class="border-t border-line bg-ink-soft/40">
+  <div class="mx-auto max-w-6xl px-6 py-14 lg:px-8">
+    <div class="flex flex-col gap-10 md:flex-row md:items-start md:justify-between">
+      <div class="max-w-sm">
+        <p class="font-display text-2xl text-bone">Felipe Plets</p>
+        <p class="mt-3 text-sm leading-relaxed text-muted">
+          {SITE.tagline}. Writing at{' '}
+          <a
+            href={SUBSTACK.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="link-underline text-amber">{SUBSTACK.name}</a
+          >.
+        </p>
+      </div>
+
+      <div class="flex flex-col gap-4">
+        <p class="eyebrow">Elsewhere</p>
+        <ul class="flex flex-col gap-3">
+          {
+            SOCIALS.map((social) => (
+              <li>
+                <a
+                  href={social.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="group inline-flex items-center gap-3 text-sm text-muted transition-colors hover:text-bone"
+                >
+                  <Icon name={social.icon} class="h-4 w-4 text-faint transition-colors group-hover:text-copper" />
+                  <span class="link-underline">{social.name}</span>
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+    </div>
+
+    <div class="rule mt-12"></div>
+
+    <div class="mt-6 flex flex-col gap-2 text-xs text-faint sm:flex-row sm:items-center sm:justify-between">
+      <p>&copy; {year} Felipe Plets. All rights reserved.</p>
+      <p>
+        Built with Astro. <a
+          href="https://github.com/felipeplets/felipeplets.github.io"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="link-underline hover:text-muted">Source on GitHub</a
+        >.
+      </p>
+    </div>
+  </div>
+</footer>

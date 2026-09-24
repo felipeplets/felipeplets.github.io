@@ -1,0 +1,46 @@
+---
+import Icon from './Icon.astro';
+
+interface Props {
+  href: string;
+  variant?: 'primary' | 'ghost';
+  external?: boolean;
+  withArrow?: boolean;
+  class?: string;
+  'aria-label'?: string;
+}
+
+const {
+  href,
+  variant = 'primary',
+  external = false,
+  withArrow = false,
+  class: className = '',
+  ...rest
+} = Astro.props;
+
+const base =
+  'group inline-flex items-center gap-2 rounded-full px-6 py-3 text-sm font-medium transition-colors duration-300 ease-[var(--ease-out-soft)]';
+
+const variants = {
+  primary: 'bg-copper text-ink hover:bg-amber',
+  ghost: 'border border-line-strong text-bone hover:border-copper hover:text-amber',
+};
+---
+
+<a
+  href={href}
+  class={`${base} ${variants[variant]} ${className}`}
+  {...external ? { target: '_blank', rel: 'noopener noreferrer' } : {}}
+  {...rest}
+>
+  <slot />
+  {
+    withArrow && (
+      <Icon
+        name="arrow"
+        class="h-4 w-4 transition-transform duration-300 ease-[var(--ease-out-soft)] group-hover:translate-x-1"
+      />
+    )
+  }
+</a>

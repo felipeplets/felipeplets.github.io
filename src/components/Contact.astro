@@ -1,0 +1,92 @@
+---
+import Icon from './Icon.astro';
+import { SOCIALS, SUBSTACK, CONTACT_EMAIL } from '../consts';
+
+const linkedin = SOCIALS.find((s) => s.name === 'LinkedIn')!;
+const github = SOCIALS.find((s) => s.name === 'GitHub')!;
+
+const channels = [
+  {
+    label: 'Email',
+    value: CONTACT_EMAIL,
+    href: `mailto:${CONTACT_EMAIL}`,
+    icon: 'mail' as const,
+    note: 'Best for speaking enquiries and advisory work.',
+  },
+  {
+    label: 'LinkedIn',
+    value: '/in/felipeplets',
+    href: linkedin.url,
+    icon: 'linkedin' as const,
+    note: 'Where most conversations actually start.',
+    external: true,
+  },
+  {
+    label: 'GitHub',
+    value: '@felipeplets',
+    href: github.url,
+    icon: 'github' as const,
+    note: 'Code, experiments, and this site.',
+    external: true,
+  },
+];
+---
+
+<section id="contact" class="relative scroll-mt-24 overflow-hidden border-t border-line bg-ink-soft/30">
+  <div class="mx-auto max-w-6xl px-6 py-24 lg:px-8 lg:py-32">
+    <div class="grid gap-14 lg:grid-cols-[1.1fr_1fr] lg:gap-20">
+      <div data-reveal>
+        <p class="eyebrow">Contact</p>
+        <h2 class="mt-4 text-3xl leading-tight sm:text-4xl lg:text-5xl">
+          Let&rsquo;s talk about what your team is actually shipping.
+        </h2>
+        <p class="mt-6 max-w-lg text-lg leading-relaxed text-muted">
+          Whether you are three months into an AI rollout or still deciding where to start,
+          I am happy to compare notes. The newsletter is the easiest place to keep in touch
+          &mdash; everything else is below.
+        </p>
+
+        <a
+          href={SUBSTACK.url}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="group mt-10 inline-flex items-center gap-3 text-amber"
+        >
+          <span class="link-underline text-base">Subscribe to All You Can Lead</span>
+          <Icon
+            name="arrow"
+            class="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1"
+          />
+        </a>
+      </div>
+
+      <ul class="flex flex-col gap-px overflow-hidden rounded-2xl border border-line bg-line" data-reveal>
+        {
+          channels.map((channel) => (
+            <li class="bg-ink transition-colors duration-500 hover:bg-ink-raised">
+              <a
+                href={channel.href}
+                class="group flex items-start gap-5 p-7"
+                {...channel.external ? { target: '_blank', rel: 'noopener noreferrer' } : {}}
+              >
+                <Icon
+                  name={channel.icon}
+                  class="mt-1 h-5 w-5 shrink-0 text-faint transition-colors duration-300 group-hover:text-copper"
+                />
+                <span class="flex-1">
+                  <span class="block text-xs uppercase tracking-[0.14em] text-faint">
+                    {channel.label}
+                  </span>
+                  <span class="mt-1 block text-base text-bone transition-colors duration-300 group-hover:text-amber">
+                    {channel.value}
+                  </span>
+                  <span class="mt-1 block text-sm text-muted">{channel.note}</span>
+                </span>
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </div>
+</section>

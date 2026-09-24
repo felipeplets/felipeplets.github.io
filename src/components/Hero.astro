@@ -1,0 +1,56 @@
+---
+import Button from './Button.astro';
+import Icon from './Icon.astro';
+import { SOCIALS, SUBSTACK } from '../consts';
+
+const links = SOCIALS.filter((s) => s.name !== 'Substack');
+---
+
+<section class="relative isolate overflow-hidden grain">
+  <div class="hero-veil absolute inset-0 -z-10"></div>
+  <div
+    class="absolute inset-x-0 bottom-0 -z-10 h-32 bg-gradient-to-b from-transparent to-ink"
+  >
+  </div>
+
+  <div class="mx-auto max-w-6xl px-6 pb-24 pt-40 lg:px-8 lg:pb-32 lg:pt-52">
+    <p class="eyebrow" data-reveal>Engineering leadership for the agentic era</p>
+
+    <h1
+      class="mt-6 max-w-4xl text-4xl leading-[1.08] sm:text-5xl lg:text-6xl xl:text-7xl"
+      data-reveal
+    >
+      More code than ever.<br class="hidden sm:block" />
+      <span class="text-copper">The bar stays where it was.</span>
+    </h1>
+
+    <p class="mt-8 max-w-2xl text-lg leading-relaxed text-muted sm:text-xl" data-reveal>
+      I'm Felipe Plets, an engineering leader in Toronto. Vibe coding and agentic
+      engineering changed how fast software can be produced &mdash; not what makes it worth
+      trusting. I work with teams on the practices that let velocity rise without quality
+      quietly drifting down.
+    </p>
+
+    <div class="mt-12 flex flex-wrap items-center gap-4" data-reveal>
+      <Button href={SUBSTACK.url} external withArrow>Read the newsletter</Button>
+      <Button href="#contact" variant="ghost">Work with me</Button>
+    </div>
+
+    <div class="mt-14 flex items-center gap-6" data-reveal>
+      {
+        links.map((social) => (
+          <a
+            href={social.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="text-faint transition-colors duration-300 hover:text-copper"
+            aria-label={social.name}
+          >
+            <Icon name={social.icon} class="h-5 w-5" />
+          </a>
+        ))
+      }
+      <div class="h-px flex-1 bg-line"></div>
+    </div>
+  </div>
+</section>

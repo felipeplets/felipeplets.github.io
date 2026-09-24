@@ -1,0 +1,176 @@
+@import 'tailwindcss';
+
+/* ---------------------------------------------------------------------------
+   Midnight & Copper — design tokens
+   Dark-first palette. Deep navy-black ground, warm copper accent, bone text.
+   --------------------------------------------------------------------------- */
+@theme {
+  --color-ink: #0b0f14;
+  --color-ink-soft: #121822;
+  --color-ink-raised: #18202c;
+  --color-line: #1e2733;
+  --color-line-strong: #2b3746;
+
+  --color-bone: #f4f1ea;
+  --color-muted: #9aa6b2;
+  --color-faint: #7a8592;
+
+  --color-copper: #c97b4a;
+  --color-copper-deep: #a55f35;
+  --color-amber: #e4a768;
+
+  --font-display: 'Fraunces Variable', ui-serif, Georgia, Cambria, 'Times New Roman', serif;
+  --font-sans: 'Inter Variable', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
+
+  --ease-out-soft: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* ---------------------------------------------------------------------------
+   Base
+   --------------------------------------------------------------------------- */
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 6rem;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    background-color: var(--color-ink);
+    color: var(--color-bone);
+    font-family: var(--font-sans);
+    font-synthesis-weight: none;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-display);
+    font-variation-settings: 'SOFT' 0, 'WONK' 0;
+    font-weight: 400;
+    letter-spacing: -0.015em;
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  ::selection {
+    background-color: var(--color-copper);
+    color: var(--color-ink);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-amber);
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
+
+  :focus:not(:focus-visible) {
+    outline: none;
+  }
+}
+
+/* ---------------------------------------------------------------------------
+   Components
+   --------------------------------------------------------------------------- */
+@layer components {
+  .eyebrow {
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--color-copper);
+  }
+
+  .rule {
+    height: 1px;
+    background: linear-gradient(
+      to right,
+      var(--color-line-strong),
+      color-mix(in oklab, var(--color-line-strong) 30%, transparent),
+      transparent
+    );
+  }
+
+  .link-underline {
+    background-image: linear-gradient(currentColor, currentColor);
+    background-position: 0 100%;
+    background-repeat: no-repeat;
+    background-size: 0% 1px;
+    transition: background-size 0.35s var(--ease-out-soft);
+  }
+
+  .link-underline:hover {
+    background-size: 100% 1px;
+  }
+
+  /* Soft radial glow used behind the hero. */
+  .hero-veil {
+    background:
+      radial-gradient(
+        60rem 40rem at 70% -10%,
+        color-mix(in oklab, var(--color-copper) 16%, transparent),
+        transparent 70%
+      ),
+      radial-gradient(
+        45rem 30rem at 10% 10%,
+        color-mix(in oklab, #2b4a6b 22%, transparent),
+        transparent 70%
+      );
+  }
+
+  .grain::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0.035;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+}
+
+/* ---------------------------------------------------------------------------
+   Scroll-reveal — progressive enhancement.
+   Elements only start hidden when JS is available to reveal them, so the page
+   stays fully readable without scripts.
+   --------------------------------------------------------------------------- */
+@layer utilities {
+  .js [data-reveal] {
+    opacity: 0;
+    transform: translateY(1.25rem);
+    transition:
+      opacity 0.7s var(--ease-out-soft),
+      transform 0.7s var(--ease-out-soft);
+  }
+
+  .js [data-reveal].is-visible {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .js [data-reveal],
+  .js [data-reveal].is-visible {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

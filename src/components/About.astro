@@ -1,0 +1,82 @@
+---
+import { Image } from 'astro:assets';
+import Section from './Section.astro';
+import Button from './Button.astro';
+import portrait from '../assets/felipe-plets-portrait.jpg';
+
+const facts = [
+  { label: 'Writing code since', value: '1999' },
+  { label: 'Leading teams since', value: '2006' },
+  { label: 'Based in', value: 'Toronto' },
+];
+---
+
+<Section id="about" eyebrow="About">
+  <div class="grid gap-14 lg:grid-cols-[1.35fr_1fr] lg:gap-20">
+    <div data-reveal>
+      <h2 class="text-3xl leading-tight sm:text-4xl lg:text-5xl">
+        Two decades of shipping, spent on the same question.
+      </h2>
+
+      <div class="mt-8 space-y-6 text-lg leading-relaxed text-muted">
+        <p>
+          I started programming in 1999, tinkering with JavaScript because it was the
+          fastest way to make something real appear on a screen. That instinct never left.
+          Since then I have shipped production systems in Delphi, PHP, C#, Swift, Kotlin,
+          Python, Ruby, ABAP, Java and &mdash; still &mdash; a great deal of JavaScript.
+        </p>
+        <p>
+          I have been in leadership roles since 2006 &mdash; developer, Scrum Master, Agile
+          Coach, Design Thinking Coach, team lead. Different titles, the same job: helping
+          teams design a development lifecycle that produces consistent gains in
+          productivity, quality, performance and security, and then actually holding the
+          line on it. I grew up in that work in Brazil, and have been doing it in Toronto
+          since immigrating to Canada.
+        </p>
+        <p>
+          Today I work at Zensurance in Toronto and write about the shift happening around
+          all of us. The promise of AI-assisted and agentic development is real, and so is
+          the failure mode: organizations that get dramatically faster at producing code
+          they no longer understand. My work is about taking the first outcome without the
+          second.
+        </p>
+      </div>
+
+      <div class="mt-10">
+        <Button href="/about" variant="ghost" withArrow>More about my background</Button>
+      </div>
+    </div>
+
+    <aside class="lg:pt-4" data-reveal>
+      <figure class="relative overflow-hidden rounded-2xl border border-line">
+        <Image
+          src={portrait}
+          alt="Felipe Plets"
+          widths={[360, 560, 720]}
+          sizes="(min-width: 1024px) 24rem, (min-width: 640px) 60vw, 90vw"
+          class="h-auto w-full object-cover contrast-[1.02] saturate-[0.9]"
+          loading="lazy"
+        />
+        <div
+          class="pointer-events-none absolute inset-0 bg-gradient-to-t from-ink via-ink/15 to-transparent"
+        >
+        </div>
+        <div class="pointer-events-none absolute inset-0 mix-blend-soft-light bg-copper/25"></div>
+      </figure>
+
+      <div class="mt-8 rounded-2xl border border-line bg-ink-soft/60 p-8">
+        <p class="eyebrow">At a glance</p>
+        <dl class="mt-6 space-y-6">
+          {
+            facts.map((fact) => (
+              <div class="border-b border-line pb-5 last:border-0 last:pb-0">
+                <dt class="text-xs uppercase tracking-[0.14em] text-faint">{fact.label}</dt>
+                <dd class="mt-2 font-display text-2xl text-bone">{fact.value}</dd>
+              </div>
+            ))
+          }
+        </dl>
+      </div>
+    </aside>
+  </div>
+</Section>

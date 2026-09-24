@@ -1,0 +1,38 @@
+---
+import Section from './Section.astro';
+import { PILLARS } from '../content/site-content';
+---
+
+<Section
+  id="practice"
+  eyebrow="The practice"
+  title="Four things I keep coming back to"
+  lead="AI changed how quickly code appears. It did not change what makes software worth trusting. Most of my work sits at that intersection."
+>
+  <div class="mt-16 grid gap-px overflow-hidden rounded-2xl border border-line bg-line sm:grid-cols-2">
+    {
+      PILLARS.map((pillar) => (
+        <article
+          class="group flex flex-col bg-ink p-8 transition-colors duration-500 ease-[var(--ease-out-soft)] hover:bg-ink-soft lg:p-10"
+          data-reveal
+        >
+          <span class="font-display text-sm text-copper/70 transition-colors duration-500 group-hover:text-copper">
+            {pillar.number}
+          </span>
+
+          <h3 class="mt-4 text-2xl leading-snug">{pillar.title}</h3>
+
+          <p class="mt-4 flex-1 text-[0.975rem] leading-relaxed text-muted">{pillar.description}</p>
+
+          <ul class="mt-6 flex flex-wrap gap-2">
+            {pillar.points.map((point) => (
+              <li class="rounded-full border border-line-strong px-3 py-1 text-xs text-faint">
+                {point}
+              </li>
+            ))}
+          </ul>
+        </article>
+      ))
+    }
+  </div>
+</Section>

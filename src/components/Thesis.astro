@@ -1,0 +1,34 @@
+---
+import { STATS } from '../content/site-content';
+---
+
+<section class="border-y border-line bg-ink-soft/30">
+  <div class="mx-auto max-w-6xl px-6 py-24 lg:px-8 lg:py-28">
+    <blockquote class="max-w-4xl" data-reveal>
+      <p class="font-display text-2xl leading-[1.35] text-bone sm:text-3xl lg:text-4xl">
+        The strategic question for engineering leaders isn&rsquo;t <span class="text-muted"
+          >&ldquo;how do we generate more code?&rdquo;</span
+        > but <span class="text-copper"
+          >&ldquo;how do we design our engineering practices so quality doesn&rsquo;t drift
+          as velocity increases?&rdquo;</span
+        >
+      </p>
+    </blockquote>
+
+    <dl class="mt-16 grid gap-10 sm:grid-cols-3 sm:gap-8">
+      {
+        STATS.map((stat) => (
+          <div data-reveal>
+            <dt class="font-display text-4xl text-copper lg:text-5xl">{stat.value}</dt>
+            <dd class="mt-4 text-sm leading-relaxed text-muted">
+              {stat.label}
+              <span class="mt-2 block text-xs uppercase tracking-[0.14em] text-faint">
+                {stat.source}
+              </span>
+            </dd>
+          </div>
+        ))
+      }
+    </dl>
+  </div>
+</section>
