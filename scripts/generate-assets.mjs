@@ -62,14 +62,27 @@ const ogSvg = `
 </svg>
 `;
 
+/** The monogram, sized so the F still reads at 16px. */
+const MONOGRAM = 'M19 14H46V22.5H29V27.5H42V36H29V50H19Z';
+
 const iconSvg = (size) => `
 <svg xmlns="http://www.w3.org/2000/svg" width="${size}" height="${size}" viewBox="0 0 64 64">
   <rect width="64" height="64" rx="14" fill="${INK}"/>
-  <path d="M22 46V18h21v6.4H29.2v5.3h12.1v6.4H29.2V46z" fill="${COPPER}"/>
+  <path d="${MONOGRAM}" fill="${COPPER}"/>
 </svg>
 `;
 
 await mkdir(publicDir, { recursive: true });
+
+// The vector favicon is written from the same monogram so the two never drift.
+await writeFile(
+  join(publicDir, 'favicon.svg'),
+  `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Felipe Plets">
+  <rect width="64" height="64" rx="14" fill="${INK}"/>
+  <path d="${MONOGRAM}" fill="${COPPER}"/>
+</svg>
+`,
+);
 
 await sharp(Buffer.from(ogSvg)).png().toFile(join(publicDir, 'og-image.png'));
 await sharp(Buffer.from(iconSvg(180))).png().toFile(join(publicDir, 'apple-touch-icon.png'));
@@ -92,4 +105,4 @@ entry.writeUInt32LE(header.length + entry.length, 12);
 
 await writeFile(join(publicDir, 'favicon.ico'), Buffer.concat([header, entry, icoPng]));
 
-console.log('Generated og-image.png, apple-touch-icon.png and favicon.ico');
+console.log('Generated favicon.svg, og-image.png, apple-touch-icon.png and favicon.ico');

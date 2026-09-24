@@ -10,14 +10,14 @@ export const PILLARS: Pillar[] = [
     number: '01',
     title: 'Quality that does not drift',
     description:
-      'Vibe coding and agentic engineering dramatically increase how fast code can be produced. High-quality code still requires planning, architecture and experienced judgement. Without strong guardrails, average quality drifts down — quietly, and then all at once.',
+      'Vibe coding and agentic engineering dramatically increase how fast code can be produced. High-quality code still requires planning, architecture and experienced judgement. Without strong guardrails, average quality drifts down quietly, and then all at once.',
     points: ['Guardrails by design', 'Architecture up front', 'Risk in the dependency chain'],
   },
   {
     number: '02',
     title: 'AI-native teams',
     description:
-      'The biggest leadership challenge right now is not AI adoption — it is building teams that collaborate with AI rather than consume its output the way they once consumed search results.',
+      'The biggest leadership challenge right now is not AI adoption. It is building teams that collaborate with AI rather than consume its output the way they once consumed search results.',
     points: ['Collaborate, not consume', 'Redefine "good work"', 'AI fluency as a norm'],
   },
   {
@@ -45,7 +45,7 @@ export const ENGAGEMENTS: Engagement[] = [
   {
     title: 'Keynotes & talks',
     description:
-      'Conference and internal sessions on what actually changes when agents join the team — and what stubbornly does not.',
+      'Conference and internal sessions on what actually changes when agents join the team, and what stubbornly does not.',
   },
   {
     title: 'Team workshops',

@@ -14,7 +14,7 @@ export const SUBSTACK = {
   url: 'https://allyoucanlead.substack.com',
   feed: 'https://allyoucanlead.substack.com/feed',
   description:
-    'Leadership, technology, and personal growth — written from the lens of a hands-on engineering leader.',
+    'Leadership, technology, and personal growth, written from the lens of a hands-on engineering leader.',
 } as const;
 
 export const SOCIALS = [
